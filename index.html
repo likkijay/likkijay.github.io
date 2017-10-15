@@ -6,31 +6,47 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LIKKIJAY</title>
     <style>
-        header {
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             padding: 20px 0;
-            border-bottom: 2px solid #999;
+            border-bottom: 2px solid #777;
+            height: 80px;
+            background-color: #999;
+        }
+
+        ul {
+            list-style: none;
         }
 
         a {
             text-decoration: none;
             padding: 10px 20px;
+            margin: 0 15px;
             background-color: #333;
             color: #fff;
         }
     </style>
 </head>
+
 <body>
-    <header>
-            <h1>Hello World!</h1>
-            <nav>
-                <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contacts</a></li>
-                </ul>
-            </nav>
+    
+    <header class="header">
+        <h1>Hello World!</h1>
+        <nav>
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contacts</a></li>
+            </ul>
+        </nav>
     </header>
         
 </body>
