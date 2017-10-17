@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Acme Web Services</title>
+    <link rel="stylesheet" href="w3css.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .branding {
+            font-size: 17px;
+        }
+
+        .showcase {
+            background: url("w3css_responsive_img2.jpg") no-repeat;
+            height: 600px;
+            background-position: center;
+            padding: 140px 100px;
+            color: #fff;
+        }
+
+        .showcase h1 {
+            font-size: 40px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .showcase hr {
+            width: 100px;
+            margin: auto;
+            border-width: 3px;
+            border-color: #f44336;
+        }
+
+        .showcase p {
+            font-size: 16px;
+            padding-bottom: 20px;
+        }
+
+        .section {
+            padding: 40px 0;
+        }
+
+        .section h2 {
+            padding: 0;
+            margin: 0;
+        }
+
+        .section .fa {
+            font-size: 50px;
+        }
+
+        .section img {
+            width: 100%;
+        }
+
+        @media only screen and (max-width:600px) {
+            body {
+                margin-top: 190px;
+            }
+
+            .showcase {
+                height: 400px;
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="w3-top">
+        <div class="w3-bar w3-black">
+            <span class="w3-bar-item w3-mobile branding">Acme Web Services</span>
+            <span class="w3-right w3-mobile">
+                <a href="#" class="w3-bar-item w3-button w3-mobile w3-hover-red">Home</a>
+                <a href="#" class="w3-bar-item w3-button w3-mobile w3-hover-red">About</a>
+                <a href="#" class="w3-bar-item w3-button w3-mobile w3-hover-red">Services</a>
+                <a href="#" class="w3-bar-item w3-button w3-mobile w3-hover-red">Contact</a>
+            </span>
+        </div>
+    </div>
+
+    <section class="showcase">
+        <div class="w3-container w3-center">
+            <h1 class="w3-animate-opacity">Go Anywhere</h1>
+            <hr>
+            <p class="w3-animate-opacity">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio omnis animi perspiciatis fuga dolorum numquam
+                quasi ratione saepe velit iusto.</p>
+            <button class="w3-button w3-red w3-large w3-opacity" onclick="document.getElementById('start-modal').style.display='block'">
+                Start here
+            </button>
+        </div>
+    </section>
+
+    <section class="section w3-red w3-hover-opacity">
+        <div class="w3-container w3-center">
+            <i class="fa fa-home"></i>
+            <h2>Welcome home</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A illum eaque architecto accusantium consectetur quo.</p>
+        </div>
+    </section>
+
+    <section class="section w3-light-grey w3-hover-opacity">
+        <div class="w3-container w3-center">
+            <i class="fa fa-cog"></i>
+            <h2>Let's Begin</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A illum eaque architecto accusantium consectetur quo.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="w3-container">
+            <div class="w3-row-padding">
+                <div class="w3-col m5">
+                    <img src="w3css_responsive_img1.jpg" alt="">
+                </div>
+                <div class="w3-col m7">
+                    <button onclick="myFunction('what')" class="w3-btn w3-black w3-block w3-left-align">What we do</button>
+                    <div id="what" class="w3-container w3-hide w3-show">
+                        <h3>We do it all</h3>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit reiciendis nobis, error nemo sapiente
+                            accusantium enim id non, odio quidem provident dolore ad dolorum, debitis quasi quaerat qui dolor
+                            aspernatur. Corporis quibusdam at alias repellat fuga aliquam cupiditate? Rem recusandae quidem
+                            assumenda! Fugit quaerat laudantium quod deserunt sint, hic porro! Voluptatum officiis ipsam
+                            alias earum pariatur, ab asperiores iste dignissimos eum voluptatibus vel accusantium, esse perspiciatis
+                            assumenda numquam! Quibusdam animi cupiditate placeat dolores recusandae neque illum est unde
+                            aut, asperiores rem consequuntur. Atque, distinctio fugit? Fugit odio dolor, numquam earum in
+                            ab, odit provident vitae corrupti vero, porro ducimus? Amet?</p>
+                    </div>
+                    <button onclick="myFunction('who')" class="w3-btn w3-black w3-block w3-left-align">What we do</button>
+                    <div id="who" class="w3-container w3-hide">
+                        <h3>We Are Acme</h3>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit reiciendis nobis, error nemo sapiente
+                            accusantium enim id non, odio quidem provident dolore ad dolorum, debitis quasi quaerat qui dolor
+                            aspernatur. Corporis quibusdam at alias repellat fuga aliquam cupiditate? Rem recusandae quidem
+                            assumenda! Fugit quaerat laudantium quod deserunt sint</p>
+                    </div>
+                    <button onclick="myFunction('where')" class="w3-btn w3-black w3-block w3-left-align">What we do</button>
+                    <div id="where" class="w3-container w3-hide">
+                        <h3>We are everywhere</h3>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit reiciendis nobis, error nemo sapiente
+                            accusantium enim id non, odio quidem provident dolore ad dolorum, debitis quasi quaerat qui dolor
+                            aspernatur. Corporis quibusdam at alias repellat fuga aliquam cupiditate? Rem recusandae quidem
+                            assumenda! Fugit quaerat laudantium quod deserunt sint</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section w3-red w3-hover-opacity">
+        <div class="w3-container w3-center">
+            <h1 class="w3-text-shadow">Our Services</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A illum eaque architecto accusantium consectetur quo.</p>
+        </div>
+    </section>
+
+    <section class="section w3-light-grey">
+        <div class="w3-container w3-center">
+            <div class="w3-row">
+                <div class="w3-col m3">
+                    <i class="fa fa-comment w3-red w3-padding-small w3-round-xlarge"></i>
+                    <h3>Internet Marketing</h3>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="w3-col m3">
+                    <i class="fa fa-search w3-red w3-padding-small w3-round-xlarge"></i>
+                    <h3>SEO</h3>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="w3-col m3">
+                    <i class="fa fa-cubes w3-red w3-padding-small w3-round-xlarge"></i>
+                    <h3>Software development</h3>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+                <div class="w3-col m3">
+                    <i class="fa fa-cloud w3-red w3-padding-small w3-round-xlarge"></i>
+                    <h3>Cloud hosting</h3>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section w3-dark-grey w3-hover-opacity">
+        <div class="w3-container w3-center">
+            <h1 class="w3-text-shadow">Get in touch</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A illum eaque architecto accusantium consectetur quo.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="w3-container">
+            <div class="w3-card-4">
+                <div class="w3-container w3-dark-grey">
+                    <h2>Contact us</h2>
+                </div>
+                <form action="" class="w3-container w3-padding-large">
+                    <label for="" class="w3-label">Name</label><br>
+                    <input type="text" class="w3-input"><br>
+                    <label for="" class="w3-label">Email</label><br>
+                    <input type="text" class="w3-input"><br>
+                    <label for="" class="w3-label">Message</label><br>
+                    <textarea name="" id="" cols="30" rows="5" class="w3-input w3-border"></textarea><br>
+                    <button type="submit" class="w3-button">Submit</button>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="w3-black w3-padding-large w3-center">
+        <p>Acme Web Services &copy; 2017</p>
+    </footer>
+
+    <div id="start-modal" class="w3-modal">
+        <div class="w3-modal-content">
+            <header class="w3-container w3-red">
+                <span class="w3-button w3-display-topright" onclick="document.getElementById('start-modal').style.display='none'">&times;</span>
+                <h2>Get started</h2>
+            </header>
+            <div class="w3-container">
+                <form action="">
+                    <div class="w3-section">
+                        <label for="">Name</label>
+                        <input type="text" class="w3-input w3-border w3-margin-bottom" placeholder="Enter your name">
+                        <label for="">Username</label>
+                        <input type="text" class="w3-input w3-border w3-margin-bottom" placeholder="Enter your username">
+                        <label for="">Password</label>
+                        <input type="password" class="w3-input w3-border w3-margin-bottom" placeholder="Enter your password">
+                        <label for="">Confirm password</label>
+                        <input type="password" class="w3-input w3-border w3-margin-bottom" placeholder="Enter your password">
+                        <button class="w3-black w3-block w3-button w3-section w3-padding">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function myFunction(id) {
+            var x = document.getElementById(id);
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
+</body>
+
+</html>
