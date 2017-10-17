@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Likkijay</title>
-	<link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/png" href="logo.png">
     <style>
         * {
             margin: 0;
@@ -20,27 +20,51 @@
             color: #fff;
         }
 
-        ul {
-            list-style: none;
+        .container {
             display: flex;
-            width: 100%;
             justify-content: center;
             margin-top: 20px;
-            flex-wrap: wrap;
+        }
+
+        .section {
+            width: 300px;
+            border: 2px solid #2dbbc3;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+
+        .section h2 {
+            text-align: center;
+            color: #fff;
+            background-color: #2dbbc3;
+            padding: 10px 0;
+            margin-bottom: 10px;
         }
 
         .navlink {
-            display: inline-block;
+            display: block;
             text-decoration: none;
             padding: 10px 20px;
             margin-bottom: 8px;
-            margin-right: 8px;
             background: #2dbbc3;
             color: #fff;
+            margin-left: 10px;
+            margin-right: 10px;
         }
 
         .navlink:hover {
             box-shadow: 0 3px 7px 0 #555;
+        }
+
+        @media screen and (max-width: 700px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section {
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
@@ -48,20 +72,26 @@
 <body>
 
     <h1>Likkijay</h1>
+    <div class="container">
+        <div class="section">
+            <h2>Single file projects</h2>
+            <a href="single_doc/css3_pricing_tables.html" target="_blank" class="navlink">CSS3 Pricing tables</a>
+            <a href="single_doc/responsive_form.html" target="_blank" class="navlink">Responsive form</a>
+            <a href="single_doc/side_menu.html" target="_blank" class="navlink">Side-menu</a>
+        </div>
 
-    <ul>
-        <a href="basic_parallax/basic_parallax.html" target="_blank" class="navlink">Basic parallax</a>
-        <a href="bootstrap_scroll_animation/bootstrap_scroll_animation.html" target="_blank" class="navlink">Bootstrap scroll animation</a>
-        <a href="single_doc/css3_pricing_tables.html" target="_blank" class="navlink">CSS3 Pricing tables</a>
-        <a href="flexboxgrid/flexboxgrid.html" target="_blank" class="navlink">Flexboxgrid</a>
-        <a href="single_doc/responsive_form.html" target="_blank" class="navlink">Responsive form</a>
-        <a href="responsive_layout/responsive_layout.html" target="_blank" class="navlink">Responsive layout</a>
-        <a href="single_doc/side_menu.html" target="_blank" class="navlink">Side-menu</a>
-        <a href="skeleton/skeleton.html" target="_blank" class="navlink">Skeleton</a>
-        <a href="video_bg/video_bg.html" target="_blank" class="navlink">Video background</a>
-        <a href="w3css_responsive/w3css_responsive.html" target="_blank" class="navlink">W3CC Framework</a>
-    </ul>
-    
+        <div class="section">
+            <h2>Multi-file projects</h2>
+            <a href="basic_parallax/basic_parallax.html" target="_blank" class="navlink">Basic parallax</a>
+            <a href="bootstrap_scroll_animation/bootstrap_scroll_animation.html" target="_blank" class="navlink">Bootstrap scroll animation</a>
+            <a href="flexboxgrid/flexboxgrid.html" target="_blank" class="navlink">Flexboxgrid</a>
+            <a href="responsive_layout/responsive_layout.html" target="_blank" class="navlink">Responsive layout</a>
+            <a href="skeleton/skeleton.html" target="_blank" class="navlink">Skeleton</a>
+            <a href="video_bg/video_bg.html" target="_blank" class="navlink">Video background</a>
+            <a href="w3css_responsive/w3css_responsive.html" target="_blank" class="navlink">W3CC Framework</a>
+        </div>
+    </div>
+
 </body>
 
 </html>
