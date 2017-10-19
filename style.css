@@ -1,6 +1,7 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body {
     background-color: #349bff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .logo {
@@ -32,6 +33,7 @@ body {
     background-color: #349bff;
     padding: 10px 0;
     margin-bottom: 10px;
+    font-family: initial;
 }
 
 .navlink {
