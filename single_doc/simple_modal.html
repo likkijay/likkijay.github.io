@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple Modal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            background-color: #349bff;
+            padding: 1em 2em;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.5s;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 3px 0 #000;
+            background-color: #349;
+        }
+
+        .btn:active {
+            box-shadow: inset 0 0 3px 0 #fff;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #f4f4f4;
+            margin: 20% auto;
+            width: 70%;
+            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+            animation-name: modalopen;
+            animation-duration: 1s;
+        }
+
+        .modal-header {
+            background-color: #349bff;
+            padding: 15px;
+            color: #fff;
+        }
+
+        .modal-header h2, .modal-footer h3 {
+            margin: 0;
+        }
+
+        .modal-body {
+            padding: 10px 20px;
+        }
+
+        .modal-footer {
+            background-color: #349bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .close-btn {
+            color: #fff;
+            float: right;
+            font-size: 30px;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            cursor: pointer;
+            color: #000;
+            text-decoration: none;
+        }
+
+
+
+        @keyframes modalopen {
+            from {
+                opacity: 0
+            }
+            to {
+                opacity: 1
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="modalBtn" class="btn">
+        Click Here
+    </button>
+
+    <div id="simpleModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="closeBtn" class="close-btn">&times;</span>
+                <h2>Modal Header</h2>
+            </div>
+            <div class="modal-body">
+                <p>Hello, I'm a modal</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, deleniti ea reprehenderit iusto nostrum alias dolore aliquid optio aperiam cum saepe consequatur voluptatem ipsa laudantium earum perferendis eos dignissimos incidunt!</p>
+            </div>
+            <div class="modal-footer">
+                <h3>Modal Footer</h3>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var modal = document.getElementById('simpleModal');
+            var modalBtn = document.getElementById('modalBtn');
+            var closeBtn = document.getElementById('closeBtn');
+            modalBtn.addEventListener('click', function () {
+                modal.style.display = 'block';
+            });
+            closeBtn.addEventListener('click', function () {
+                modal.style.display = 'none';
+            });
+            window.addEventListener('click', function (e) {
+                if (e.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        })();
+
+    </script>
+</body>
+
+</html>
