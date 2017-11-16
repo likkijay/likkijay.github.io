@@ -16,6 +16,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .section {
@@ -46,12 +47,11 @@ body {
 }
 
 .footer {
-    position: fixed;
-    bottom: 0;
     width: 100%;
     padding: 20px 40px;
     background-color: #2243ef;
     box-shadow: 0 -2px 0 0 #fff;
+    height: 60px;
 }
 
 .footer nav {
