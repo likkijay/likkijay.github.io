@@ -1,12 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JS CheatSheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            background-color: #fff;
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 1px solid #666;
+            margin: 0 -40px;
+            padding: 10px 0;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>JavaScript CheatSheet</h1>
+    <div class="container">
+        <h1>JavaScript CheatSheet</h1>
+    </div>
+    <p>Today is <span id="currentTime"></span></p>
+    <button onclick="showTime()">Show date</button>
+    <script>
+      function showTime() {
+          let currentTime = document.getElementById('currentTime');
+          let date = new Date();
+          //let hours = date.getHours();
+          currentTime.innerHTML = date.getHours() + ' : ' + date.getMinutes();
+      }
+    </script>
 </body>
+
 </html>

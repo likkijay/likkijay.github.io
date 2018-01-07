@@ -49,6 +49,8 @@ body {
 .footer {
     width: 100%;
     padding: 20px 40px;
+    position: absolute;
+    bottom: 0;
     background-color: #2243ef;
     box-shadow: 0 -2px 0 0 #fff;
     height: 60px;

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple Slideshow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="" class="image" name="image">
+    </div>
+
+    <script>
+        let i = 0;
+        let images = [
+            'https://images.pexels.com/photos/356043/pexels-photo-356043.jpeg?w=940&h=650&auto=compress&cs=tinysrgb',
+            'https://images.pexels.com/photos/262488/pexels-photo-262488.jpeg?w=940&h=650&auto=compress&cs=tinysrgb',
+            'https://images.pexels.com/photos/673018/pexels-photo-673018.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'
+        ];
+
+        function changeImg() {
+            document.image.src = images[i];
+            if (i < images.length - 1) {
+                i++;
+            } else {
+                i = 0;
+            }
+
+            setTimeout('changeImg()', 3000);
+        }
+
+        window.onload = changeImg;
+    </script>
+</body>
+</html>
