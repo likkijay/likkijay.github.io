@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+    
+    <head>
+        
+        <meta charset="utf-8">
+        <title>JS Reference</title>
+        <link rel="stylesheet" href="styles/main.css">
+        
+    </head>
+    
+    <body>
+       
+        <header class="header">
+           
+            <h1 class="heading header__title">JS reference.</h1>
+            
+        </header>
+        
+        <section class="section">
+           
+            <h1 class="heading section__title">String methods</h1>
+            
+            <code class="code-example">
+                var x = "some string";<br>
+                var y = "Some other string";
+            </code>
+        
+            <p>-- <strong>charAt(index)</strong>: shows what character is present at given index.</p>
+            <code class="code-example">
+                x.charAt(1); // outputs "o"
+            </code>
+            <p>-- <strong>charCodeAt(index)</strong>: shows unicode of a character at given index.</p>
+            <code class="code-example">
+                x.charCodeAt(1); // outputs "111"
+            </code>
+            <p>-- <strong>concat()</strong>: concatenate 2 strings.</p>
+            <code class="code-example">
+                x.concat(y); // outputs "some stringSome other string"
+            </code>
+            <p>-- <strong>endsWith()</strong>: checks if string ends with given characters or substring.</p>
+            <code class="code-example">
+                x.endsWith("ing"); // outputs "true"
+            </code>
+            <p>-- <strong>String.fromCharCode()</strong>: shows what character is present at given unicode position.</p>
+            <code class="code-example">
+                String.fromCharCode(111); // outputs "o"
+            </code>
+            <p>-- <strong>includes()</strong>: shows if string contains given substring or character.</p>
+            <code class="code-example">
+                x.includes("som"); // outputs "true"
+            </code>
+            <p>-- <strong>indexOf</strong>: shows index of given character (the first that appears in the string).</p>
+            <code class="code-example">
+                x.indexOf("o"); outputs "1"
+            </code>
+            <p>-- <strong>lastIndexOf()</strong>: shows the last index of given character</p>
+            <code class="code-example">
+                x.lastIndexOf("s"); // outputs "5"
+            </code>
+            <p>-- <strong>match()</strong>: returns an array of matched characters if they present in the string. Accepts arguments in form of regular expressions: /regexp/g.</p>
+            <code class="code-example">
+                x.match(/ome/g); outputs "["ome"]"
+            </code>
+            <p>-- <strong>repeat()</strong>: returns the string given number of times.</p>
+            <code class="code-example">
+                x.repeat(2); outputs "some stringsome string"
+            </code>
+            <p>-- <strong>replace()</strong>: returns a new string with replaced characters or substrings or regular expressions.</p>
+            <code class="code-example">
+                x.replace("some", "SOME"); outputs "SOME string"<br>
+                x.replace(/s/g, "S"); outputs "Some String"
+            </code>
+            <p>-- <strong>search()</strong>: returns index/indexes of provided arguments if present.</p>
+            <code class="code-example">
+                x.search("s"); // outputs "0"
+            </code>
+            <p>-- <strong>slice()</strong>: returns a new string starting at given index and ending at index before provided end point. </p>
+            <code class="code-example">
+                x.slice(0, 5); // outputs "some "
+            </code>
+            <p>-- <string>split()</string>: splits a string into an array, divider is defined as argument.</p>
+            <code class="code-example">
+                x.split(" "); outputs "["some", "string"]"
+            </code>
+            <p>-- <strong>startsWith()</strong>: checks if string starts with given character or substring.</p>
+            <code class="code-example">
+                x.startsWith("some"); // outputs "true"
+            </code>
+            <p>-- <strong>substr()</strong>: returns a string of characters begins with given index and through to given number of characters.</p>
+            <code class="code-example">
+                x.substr(2, 4); // outputs "me s"
+            </code>
+            <p>-- <strong>substring()</strong>: returns a string starting with given index and ending before given second index (like slice()).</p>
+            <code class="code-example">
+                x.substring(2, 4); // outputs "me"
+            </code>
+            <p>-- <strong>toLowerCase()</strong>: returns a string with lower case characters.</p>
+            <code class="code-example">
+                y.toLowerCase(); // outputs "some other string"
+            </code>
+            <p>-- <strong>toUpperCase()</strong>: returns a string with upper case characters.</p>
+            <code class="code-example">
+                x.toUpperCase(); // outputs "SOME STRING"
+            </code>
+            <p>-- <strong>trim()</strong>: removes white spaces from left and rigth sides of given string.</p>
+            <code class="code-example">
+                var c = "   some string   ";<br>
+                c.trim(); // outputs "some string"
+            </code>
+        
+        </section>
+        
+        <section class="section">
+           
+            <h1 class="heading section__title">Functions</h1>
+            
+            <p>Function declaration/statement</p>
+            <code class="code-example">
+                function nameOfFunction(args) {<br>
+                    some code here;<br>
+                }
+            </code>
+            
+        </section>
+        
+    </body>
+    
+</html>

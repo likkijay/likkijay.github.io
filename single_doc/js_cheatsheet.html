@@ -13,7 +13,7 @@
         }
 
         body {
-            background-color: #333;
+            background-color: #888;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
@@ -35,18 +35,8 @@
 
 <body>
     <div class="container">
-        <h1>JavaScript CheatSheet</h1>
+        <h1>JavaScript &amp; CheatSheet</h1>
     </div>
-    <p>Today is <span id="currentTime"></span></p>
-    <button onclick="showTime()">Show date</button>
-    <script>
-      function showTime() {
-          let currentTime = document.getElementById('currentTime');
-          let date = new Date();
-          //let hours = date.getHours();
-          currentTime.innerHTML = date.getHours() + ' : ' + date.getMinutes();
-      }
-    </script>
 </body>
 
 </html>

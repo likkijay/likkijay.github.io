@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Emmet Reference</title>
+	<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+	<header class="header">
+		<h1 class="heading header__title">Emmet</h1>
+	</header>
+	<section class="section">
+
+		<h1 class="heading section__title">General information</h1>
+		<article class="section__article">
+
+			<h2 class="heading article__title">Abbreviations syntax</h2>
+			<p><strong>Create element</strong></p>
+			<code class="code-example">
+				p // Outputs &lt;p&gt;&lt;/p&gt;<br>
+				em // Outputs &lt;em&gt;&lt;/em&gt;
+			</code>
+			<p><strong>Child elements (>)</strong></p>
+			<code class="code-example">
+				div>ul>li // Outputs &lt;div&gt; &lt;ul&gt; &lt;li&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt;
+			</code>
+			<p><strong>Sibling elements (+)</strong></p>
+			<code class="code-example">
+				div+p // Outputs &lt;div&gt;&lt;/div&gt; &lt;p&gt;&lt;/p&gt;
+			</code>
+			<p><strong>Climb-up (^)</strong></p>
+			<code class="code-example">
+				div>p>em^p // Outputs &lt;div&gt; &lt;p&gt; &lt;em&gt;&lt;/em&gt; &lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;/div&gt;
+			</code>
+			<p><strong>Multiplication (*)</strong></p>
+			<code class="code-example">
+				ul>li*3 // Outputs &lt;ul&gt; &lt;li&gt;&lt;/li&gt; &lt;li&gt;&lt;/li&gt; &lt;li&gt;&lt;/li&gt; &lt;/ul&gt;
+			</code>
+
+			<p><strong>Grouping</strong></p>
+			<code class="code-example">
+				div>(header>h1+p)+footer>p*2 // Outputs &lt;div&gt; &lt;header&gt; &lt;h1&gt;&lt;/h1&gt; &lt;p&gt;&lt;/p&gt; &lt;/header&gt; &lt;footer&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;/footer&gt; &lt;/div&gt;
+			</code>
+
+			<p><strong>ID and CLASS</strong></p>
+			<code class="code-example">
+				div#header // Outputs &lt;div id="header"&gt;&lt;/div&gt;<br>
+				div.class1.class2.class3 // Outputs &lt;div class="class1 class2 class3"&gt;&lt;/div&gt;
+				td[title="Hello" colspan="3"] // Outputs &lt;td title="Hello" colspan="3"&gt;&lt;/td&gt;
+			</code>
+
+		</article>
+		
+	</section>
+</body>
+</html>

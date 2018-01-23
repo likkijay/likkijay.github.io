@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>My own CSS reference</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="styles/main.css" type="text/css">
+		<link rel="icon" type="image/png" href="images/css_reference_icon.png">
+	</head>
+	<body>
+		<header class="header">
+			<h1 class="heading header__title">CSS Basics</h1>
+			<nav class="header__nav">
+				<ul>
+					<li><a href="#general" class="navlink">General info</a></li>
+					<li class="dropdown-toggle"><a href="#selectors" class="navlink">Selectors</a>
+						<ul class="dropdown">
+							<li><a href="#simple-selectors" class="navlink">Simple selectors</a></li>
+							<li><a href="#complex-selectors" class="navlink">Complex selectors</a></li>
+						</ul>
+					</li>
+					<li><a href="#cascade" class="navlink">Cascade and specificity</a></li>
+					<li><a href="#inheritance" class="navlink">Inheritance</a></li>
+					<li class="dropdown-toggle"><a href="#properties" class="navlink">Properties and values</a>
+						<ul class="dropdown">
+							<li><a href="#at-rules" class="navlink">@-rules</a></li>
+							<li><a href="#text-formatting" class="navlink">Text formatting properties</a></li>
+						</ul>
+					</li>
+					<li><a href="#layout" class="navlink">CSS Layout</a></li>
+					<li><a href="#animation" class="navlink">CSS Animation</a></li>
+					<li><a href="#responsive" class="navlink">Responsive design</a></li>
+				</ul>
+			</nav>
+		</header>
+		<section id="general" class="section">
+			<h1 class="heading section__title">General information</h1>
+			<article class="section__article">
+				<h2 class="heading article__title">1. What is CSS</h2>
+				<p>CSS is a separate, but complementary, language to HTML. CSS is what we use to apply styles to the content on our web page. While HTML provides the page’s structure, CSS works hand in hand with the web browser to make HTML look good on screen. HTML is for semantic structuring and CSS is for presentation.</p>
+			</article>
+			<article class="section__article">
+				<h2 class="heading article__title">2. CSS rule set</h2>
+				<p>CSS consist of multiple style rules that contain several necessary elements. Here is an example of simple CSS rule:</p>
+				<code class="code-example">h1 { font-size: 24px; color: white; background-color: black; }</code>
+				<p>CSS rule consist of two elements - a selector and a declaration block. In the example above h1 is the selector and everything inside the curly braces is the declaration block. Each of the three lines in the declaration block is referred to as a declaration. Additionally, each declaration consists of a property (the part before the colon) and a value (the part after the colon). Finally, each CSS declaration ends with a semi-colon.</p>
+			</article>
+			<article class="section__article">
+				<h2 class="heading article__title">3. Adding style sheets to a web-page</h2>
+				<p>CSS can be inserted into a web page in four different ways:</p>
+				<h3 class="heading article__subheading">3.1 Using inline styles</h3>
+				<p>In this case, the CSS is contained inside of an HTML attribute called style. The attribute tells the browser that what follows inside the quotation marks is CSS. In this example, the styles will only apply to the element to which they're attached:</p>
+				<code class="code-example">&lt;h1 style="color: blue; background-color: #333;&gt;"RecipeFinder&lt;/h1&gt;</code>
+				<h3 class="heading article__subheading">3.2 Using the &lt;style&gt; element</h3>
+				<p>The &lt;style&gt; element should be used inside the &lt;head&gt; element:</p>
+				<code class="code-example">&lt;head&gt; &lt;style&gt; h1 { font-size: 24px; text-decoration: underline; } &lt;/style&gt; &lt;/head&gt;</code>
+				<h3 class="heading article__subheading">3.3 Using @import inside a &lt;style&gt; element</h3>
+				<p>The @import method of including CSS has been known to cause some problems — for example, multiple CSS files loaded via @import will often take longer to download.</p>
+				<code class="code-example">&lt;style&gt; @import url(css/style.css); &lt;/style&gt;</code>
+				<h3 class="heading article__subheading">3.4 Using the &lt;link&gt; element</h3>
+				<p>The &lt;link&gt; element should be placed inside of the &lt;head&gt; element</p>
+				<code class="code-example">&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</code>
+			</article>
+			<article class="section__article">
+				<h2 class="heading article__title">4. Starting with a Clean Slate</h2>
+				<p>Browsers apply their own styles to tags: for example, &lt;h1&gt; tags are bigger than &lt;h2&gt; tags, and both are bold, while paragraph text is smaller and isn’t bold; links are blue and underlined; and bulleted lists are indented. There’s nothing in the HTML standard that defines any of this formatting: web browsers just add this formatting to make basic HTML more readable. However, even though browsers treat all tags roughly the same, they don’t treat them identically.</p>
+				<p>To avoid cross-browser inconsistencies, it’s a good idea to start a style sheet with a clean slate. In other words, erase the built-in browser formatting and supply your own. The concept of erasing browser styling is called CSS reset. Another approach to resets is normalize.css, a free, open-source style sheet that makes different browsers display the same tags in a consistent manner. It’s widely used by web designers.</p>
+			</article>
+		</section>
+		<section id="selectors" class="section">
+			<h1 class="heading section__title">CSS selectors</h1>
+			<article class="section__article">
+				<h2 id="simple-selectors" class="heading article__title">1. Simple selectors</h2>
+				<h3 class="heading article__subheading">1.1 Universal selector</h3>
+				<p>The universal selector selects all elements on a page and is declared using an asterisk - *.</p>
+				<code class="code-example">* { color: green; font-size: 20px; line-height: 25px; }</code>
+				<h3 class="heading article__subheading">1.2 Element type selector</h3>
+				<p>Also referred to simply as a &quot;type selector&quot; this selector must match one or more HTML elements of the same name. Thus, a selector of nav would match all HTML &lt;nav&gt; elements, and a selector of ul would match all HTML unordered lists, or &lt;ul&gt; elements.</p>
+				<code class="code-example">ul { list-style: none; border: solid 1px #ccc; }</code>
+				<h3 class="heading article__subheading">1.3 ID selector</h3>
+				<p>An ID selector is declared using a hash, or pound symbol # preceding a string of characters. This selector matches any HTML element that has an ID attribute with the same value as that of the selector, but minus the hash symbol. An ID element on a web page should be unique.</p>
+				<code class="code-example">#container { width: 960px; margin: 0 auto; }</code>
+				<p>This CSS uses an ID selector to match an HTML element such as:</p>
+				<code class="code-example">&lt;div id=&quot;container&quot;&gt;&lt;/div&gt;</code>
+				<h3 class="heading article__subheading">1.4 Class selector</h3>
+				<p>The class selector is the most useful of all CSS selectors. It's declared with a dot preceding a string of one or more characters. The class selector also matches all elements on the page that have their class attribute set to the same value as the class, minus the dot.</p>
+				<code class="code-example">.box { padding: 20px; margin: 10px; width: 240px; }</code>
+				<p>These styles will apply to the following HTML element:</p>
+				<code class="code-example">&lt;div class=&quot;box&quot;&gt;&lt;/div&gt;</code>
+				<p>The same styles will also apply to any other HTML elements that have a class attribute with a value of box. Having multiple elements on a single page with the same class attribute is beneficial, because it allows you to reuse styles, and avoid needless repetition. Another reason the class selector is a valuable ally is that HTML allows multiple classes to be added to a single element. This is done by separating the classes in the HTML class attribute using spaces:</p>
+				<code class="code-example">&lt;div class=&quot;box box-more box-extended&quot;&gt;&lt;/div&gt;</code>
+			</article>
+			<article class="section__article">
+				<h2 id="complex-selectors" class="heading article__title">2. Complex selectors</h2>
+				<h3 class="heading article__subheading">2.1 Descendant combinator</h3>
+				<p>The descendant selector or the descendant combinator lets you combine two or more selectors so you can be more specific in your selection method.</p>
+				<code class="code-example">#container .box { float: left; padding-bottom: 15px; }</code>
+				<p>This declaration block will apply to all elements that have a class of box that are inside an element with an ID of container.</p>
+				<h3 class="heading article__subheading">2.2 Child combinator</h3>
+				<p>A selector that uses the child combinator is similar to a selector that uses a descendant combinator, except it only targets immediate child elements:</p>
+				<code class="code-example">#container > .box { float: left; padding-bottom: 15px; }</code>
+				<p>In this example, the selector will match all elements that have a class of box and that are immediate children of the #container element. That means, unlike the descendant combinator, there can't be another element wrapping .box — it has to be a direct child element.</p>
+				<h3 class="heading article__subheading">2.3 General sibling combinator</h3>
+				<p>A selector that uses a general sibling combinator matches elements based on sibling relationships. The selected elements are beside each other in the HTML.</p>
+				<code class="code-example">h2 ~ p { margin-bottom: 20px; }</code>
+				<p>This type of selector is declared using the tilde character (~). In this example, all paragraph elements (&lt;p&gt;) will be styled with the specified rules, but only if they are siblings of &lt;h2&gt; elements. There could be other elements in between the &lt;h2&gt; and &lt;p&gt;, and the styles would still apply.</p>
+				<h3 class="heading article__subheading">2.4 Adjacent sibling combinator</h3>
+				<p>A selector that uses the adjacent sibling combinator uses the plus symbol (+), and is almost the same as the general sibling selector . The difference is that the targeted element must be an immediate sibling, not just a general sibling.</p>
+				<code class="code-example">p + p { text-indent: 1.5em; margin-bottom: 0; }</code>
+				<p>This example will apply the specified styles only to paragraph elements that immediately follow other paragraph elements. This means the first paragraph element on a page would not receive these styles. Also, if another element appeared between two paragraphs, the second paragraph of the two wouldn't have the styles applied.</p>
+				<h3 class="heading article__subheading">2.5 Attribute selectors</h3>
+				<p>The attribute selectors target elements based on the presence and/or value of HTML attributes, and are declared using square brackets. You can also use attribute selectors without specifying anything outside the square brackets (thus targeting based on the attribute alone, irrespective of the element). It's also worth noting that, when using values, you have the option to include quotes (single or double,) or not.There are several different attribute selectors:</p>
+				<table class="standart-table">
+					<tr>
+						<th>Selector</th>
+						<th>Example</th>
+						<th>Description</th>
+					</tr>
+					<tr>
+						<td>[attribute]</td>
+						<td>[target]</td>
+						<td>selects all elements with a target attribute</td>
+					</tr>
+					<tr>
+						<td>[attribute=&quot;value&quot;]</td>
+						<td>[target=&quot;_blank&quot;]</td>
+						<td>selects all elements with target=&quot;_blank&quot;</td>
+					</tr>
+					<tr>
+						<td>[attribute^=&quot;value&quot;]</td>
+						<td>a[href^=&quot;https&quot;]</td>
+						<td>selects every &lt;a&gt; element whose href attribute value begins with &quot;https&quot;</td>
+					</tr>
+					<tr>
+						<td>[attribute$=&quot;value&quot;]</td>
+						<td>a[href$=&quot;.pdf&quot;]</td>
+						<td>selects every &lt;a&gt; element whose href attribute value ends with &quot;.pdf&quot;</td>
+					</tr>
+					<tr>
+						<td>[attribute*=&quot;value&quot;]</td>
+						<td>a[href*=&quot;vk&quot;]</td>
+						<td>selects every &lt;a&gt; element whose href attribute value contains the substring &quot;vk&quot;</td>
+					</tr>
+					<tr>
+						<td>[attribute|=&quot;value&quot;]</td>
+						<td>[lang|=&quot;en&quot;]</td>
+						<td>Selects all elements with a lang attribute value starting with &quot;en&quot;</td>
+					</tr>
+					<tr>
+						<td>[attribute~=&quot;value&quot;]</td>
+						<td>[title~=&quot;flower&quot;]</td>
+						<td>Selects all elements with a title attribute containing the word &quot;flower&quot;</td>
+					</tr>
+				</table>
+				<h3 class="heading article__subheading">2.6 Pseudo-class</h3>
+				<p>A pseudo-class uses a colon character to identify a pseudo-state that an element might be in—for example, the state of being hovered, or the state of being activated. It's important to recognize that these types of selectors do not just select elements; they select elements that are in a particular state.</p>
+				<p>Complete list of pseudo-classes:</p>
+				<table class="standart-table">
+					<tr>
+						<td>:active</td>
+						<td>a:active</td>
+						<td>Selects the active link</td>
+					</tr>
+					<tr>
+						<td>:checked</td>
+						<td>input:checked</td>
+						<td>Selects every checked &lt;input&gt; element</td>
+					</tr>
+					<tr>
+						<td>:disabled</td>
+						<td>input:disabled</td>
+						<td>Selects every disabled &lt;input&gt; element</td>
+					</tr>
+					<tr>
+						<td>:empty</td>
+						<td>p:empty</td>
+						<td>Selects every &lt;p&gt; element that has no children (including text nodes)</td>
+					</tr>
+					<tr>
+						<td>:enabled</td>
+						<td>input:enabled</td>
+						<td>Selects every enabled &lt;input&gt; element</td>
+					</tr>
+					<tr>
+						<td>:first-child</td>
+						<td>p:first-child</td>
+						<td>Selects every &lt;p&gt; element that is the first child of its parent</td>
+					</tr>
+					<tr>
+						<td>:first-of-type</td>
+						<td>p:first-of-type</td>
+						<td>Selects every &lt;p&gt; element that is the first &lt;p&gt; element of its parent</td>
+					</tr>
+					<tr>
+						<td>:focus</td>
+						<td>input:focus</td>
+						<td>Selects the input element which has focus</td>
+					</tr>
+					<tr>
+						<td>:hover</td>
+						<td>a:hover</td>
+						<td>Selects links on mouse over</td>
+					</tr>
+					<tr>
+						<td>:in-range</td>
+						<td>input:in-range</td>
+						<td>Selects input elements with a value within a specified range</td>
+					</tr>
+					<tr>
+						<td>:invalid</td>
+						<td>input:invalid</td>
+						<td>Selects all input elements with an invalid value</td>
+					</tr>
+					<tr>
+						<td>:lang(language)</td>
+						<td>p:lang(it)</td>
+						<td>Selects every &lt;p&gt; element with a lang attribute equal to &quot;it&quot; (Italian)</td>
+					</tr>
+					<tr>
+						<td>:last-child</td>
+						<td>p:last-child</td>
+						<td>Selects every &lt;p&gt; element that is the last child of its parent</td>
+					</tr>
+					<tr>
+						<td>:last-of-type</td>
+						<td>p:last-of-type</td>
+						<td>Selects every &lt;p&gt; element that is the last &lt;p&gt; element of its parent</td>
+					</tr>
+					<tr>
+						<td>:link</td>
+						<td>a:link</td>
+						<td>Selects all unvisited links</td>
+					</tr>
+					<tr>
+						<td>:not(selector)</td>
+						<td>:not(p)</td>
+						<td>Selects every element that is not a &lt;p&gt; element</td>
+					</tr>
+					<tr>
+						<td>:nth-child(n)</td>
+						<td>p:nth-child(2)</td>
+						<td>Selects every &lt;p&gt; element that is the second child of its parent</td>
+					</tr>
+					<tr>
+						<td>:nth-last-child(n)</td>
+						<td>p:nth-last-child(2)</td>
+						<td>Selects every &lt;p&gt; element that is the second child of its parent, counting from the last child</td>
+					</tr>
+					<tr>
+						<td>:nth-last-of-type(n)</td>
+						<td>p:nth-last-of-type(2)</td>
+						<td>Selects every &lt;p&gt; element that is the second &lt;p&gt; element of its parent, counting from the last child</td>
+					</tr>
+					<tr>
+						<td>:nth-of-type(n)</td>
+						<td>p:nth-of-type(2)</td>
+						<td>Selects every &lt;p&gt; element that is the second &lt;p&gt; element of its parent</td>
+					</tr>
+					<tr>
+						<td>:only-of-type</td>
+						<td>p:only-of-type</td>
+						<td>Selects every &lt;p&gt; element that is the only &lt;p&gt; element of its parent</td>
+					</tr>
+					<tr>
+						<td>:only-child</td>
+						<td>p:only-child</td>
+						<td>Selects every &lt;p&gt; element that is the only child of its parent</td>
+					</tr>
+					<tr>
+						<td>:optional</td>
+						<td>input:optional</td>
+						<td>Selects input elements with no &quot;required&quot; attribute</td>
+					</tr>
+					<tr>
+						<td>:out-of-range</td>
+						<td>input:out-of-range</td>
+						<td>Selects input elements with a value outside a specified range</td>
+					</tr>
+					<tr>
+						<td>:read-only</td>
+						<td>input:read-only</td>
+						<td>Selects input elements with the &quot;readonly&quot; attribute specified</td>
+					</tr>
+					<tr>
+						<td>:read-write</td>
+						<td>input:read-write</td>
+						<td>Selects input elements with the &quot;readonly&quot; attribute NOT specified</td>
+					</tr>
+					<tr>
+						<td>:required</td>
+						<td>input:required</td>
+						<td>Selects input elements with the &quot;required&quot; attribute specified</td>
+					</tr>
+					<tr>
+						<td>:root</td>
+						<td>:root</td>
+						<td>Selects the document's root element</td>
+					</tr>
+					<tr>
+						<td>:target</td>
+						<td>#news:target </td>
+						<td>Selects the current active #news element (clicked on a URL containing that anchor name)</td>
+					</tr>
+					<tr>
+						<td>:valid</td>
+						<td>input:valid</td>
+						<td>Selects all input elements with a valid value</td>
+					</tr>
+					<tr>
+						<td>:visited</td>
+						<td>a:visited</td>
+						<td>Selects all visited links</td>
+					</tr>
+				</table>
+				<h3 class="heading article__subheading">2.7 Pseudo-element</h3>
+				<p>This selector is quite different from the other examples we've considered. A CSS pseudo-element is used to style specified parts of an element. For example, it can be used to: style the first letter, or line, of an element; insert content before, or after, the content of an element. Pseudo-elements are:</p>
+				<table class="standart-table">
+					<tr>
+						<td>::after</td>
+						<td>p::after</td>
+						<td>Insert something after the content of each &lt;p&gt; element</td>
+					</tr>
+					<tr>
+						<td>::before</td>
+						<td>p::before</td>
+						<td>Insert something before the content of each <p> element</td>
+					</tr>
+					<tr>
+						<td>::first-letter</td>
+						<td>p::first-letter</td>
+						<td>Selects the first letter of every &lt;p&gt; element</td>
+					</tr>
+					<tr>
+						<td>::first-line</td>
+						<td>p::first-line</td>
+						<td>Selects the first line of every &lt;p&gt; element</td>
+					</tr>
+					<tr>
+						<td>::selection</td>
+						<td>p::selection</td>
+						<td>Selects the portion of an element &lt;p&gt; that is selected by a user</td>
+					</tr>
+				</table>
+			</article>
+		</section>
+		<section id="cascade" class="section">
+			<h1 class="heading section__title">Cascade and specificity</h1>
+			<article class="section__article">
+				<h2 class="heading article__title">1. Cascade</h2>
+				<p>The cascade is a set of rules for determining which style properties get applied to an element. It specifies how a web browser should handle multiple styles that apply to the same tag and what to do when CSS properties conflict. Style conflicts happen in two cases: through inheritance, when the same property is inherited from multiple ancestors; and when one or more styles apply to the same element (maybe you’ve applied a class style to a paragraph and also created a &lt;p&gt; tag style, so both styles apply to that paragraph).</p>
+				<p>CSS inheritance ensures that related elements — like all the words inside a paragraph, even those inside a link or another tag — share similar formatting. It spares you from creating specific styles for each tag on a page. The inherited styles combine to form a hybrid style. But what happens when inherited CSS properties conflict? In a nutshell, if a tag doesn’t have a specific style applied to it, then, in the case of any conflicts from inherited properties, the nearest ancestor wins.</p>
+				<p>Taking the &quot;nearest ancestor&quot rule to its logical conclusion, there’s one style that always becomes king of the CSS family tree — any style applied directly to a given tag. Suppose a font color is set for the body, paragraph, and strong tags. The paragraph style is more specific than the body style, but the style applied to the &lt;strong&gt; tag is more specific than either one. It formats the &lt;strong&gt; tags and only the &lt;strong&gt; tags, overriding any conflicting properties inherited from the other tags.</p>
+				<h3 class="heading article__subheading">One Tag, Many Styles</h3>
+				<p>Inheritance is one way that a tag can be affected by multiple styles. But it’s also possible to have multiple styles apply directly to a given tag. Based on the types of styles and the order in which they’re  created, a browser may apply one or more of them at once. Here are a few situations in which multiple styles can apply to the same tag:</p>
+				<ul class="standart-list">
+					<li><p>The tag has both a tag selector and a class style applied to it.</p></li>
+					<li><p>The same style name appears more than once in the style sheet.</p></li>
+					<li><p>A tag has both a class and an ID style applied to it.</p></li>
+					<li><p>There’s more than one style sheet containing the samestyle name attached to a page.</p></li>
+					<li><p>There are complex selectors targeting the same tag.</p></li>
+				</ul>
+				<p>If more than one style applies to a particular element, then a web browser combines the properties of all those styles, as long as they don’t conflict.</p>
+			</article>
+			<article class="section__article">
+				<h2 class="heading article__title">2. Specificity</h2>
+				<p>The cascade provides a set of rules that helps a web browser sort out any property conflicts; namely, properties from the most specific style win. CSS provides a formula for determining a style’s specificity that’s based on a value assigned to the style’s selector — a tag selector, class selector, ID selector, and so on. Here’s how the system works:</p>
+				<ul class="standart-list">
+					<li><p>A tag selector is worth 1 point.</p></li>
+					<li><p>A class selector is worth 10 points.</p></li>
+					<li><p>An ID selector is worth 100 points.</p></li>
+					<li><p>An inline style is worth 1,000 points.</p></li>
+					<li><p>A pseudo-element is treated like a tag selector and is worth 1 point.</p></li>
+					<li><p>A pseudo-class is treated like a class and is worth 10 points.</p></li>
+				</ul>
+				<p>The bigger the number, the greater the specificity. Since descendant selectors are composed of several selectors — #content p, or h2 strong, for example — the math gets a bit more complicated. The specificity of a descendant selector is the total value of all of the selectors listed.</p>
+				<p>Inherited properties don’t have any specificity. So even if a tag inherits properties from a style with  a large specificity — like #banner — those properties will always be overridden by a style that directly applies to the tag.</p>
+				<p>It’s possible for two styles with conflicting properties to have the same specificity. A specificity tie can occur when you have the same selector defined in two locations. You may have a &lt;p&gt; tag selector defined in an internal style sheet and an external style sheet. Or two different styles may simply have equal specificity values. In case of a tie, the style appearing last in the style sheet wins.</p>
+			</article>
+		</section>
+		<section id="inheritance" class="section">
+			<h1 class="heading section__title">Inheritance</h1>
+			<article class="section__article">
+				<h2 class="heading article__title">1. What is Inheritance</h2>
+				<p>Inheritance is the process by which some CSS properties applied to one tag are passed on to nested tags. For example, a &lt;p&gt; tag is always nested inside of the &lt;body&gt; tag, so properties applied to the &lt;body&gt; get inherited by the &lt;p&gt;. Inheritance works through multiple generations as well. If a tag like the &lt;em&gt; or &lt;strong&gt; appears inside of a &lt;p&gt;, then the &lt;em&gt; and the &lt;strong&gt; also inherit properties from any style applied to the &lt;body&gt;. Descendants inherit
+				properties from ancestors.</p>
+				<p>You can use inheritance to your advantage to streamline your style sheets. Say you want all the text on a page to use the same font. Instead of creating styles for each tag, simply create a tag style for the &lt;body&gt; tag. (Or create a class style and apply it to the &lt;body&gt;.) In the style, specify the font you wish to use, and all of the tags on the page inherit the font:</p>
+				<code class="code-example">body { font-family: Arial, Helvetica, sans-serif; }</code>
+			</article>
+			<article class="section__article">
+				<h2 class="heading article__title">2. The Limits of Inheritance</h2>
+				<p>Inheritance isn’t all-powerful. Many CSS properties don’t pass down to descendant tags at all. For example, the border property isn’t inherited, and with good reason. If it were, then every tag inside an element with the border property would also have a border around it. For example, if you added a border to the &lt;body&gt;, then every bulleted list would also have a box around it, and each bulleted item in the list would also have a border. Here are examples of times when inheritance doesn’t strictly apply:</p>
+				<ul class="standart-list">
+					<li><p>As a general rule, properties that affect the placement of elements on the page or the margins, background colors, and borders of elements aren’t inherited.</p></li>
+					<li><p>Web browsers use their own inherent styles to format various tags: Headings are big and bold, links are blue, and so on. When you define a font size for the text on a page and apply it to the &lt;body&gt;, headings still appear larger than paragraphs, and &lt;h1&gt; tags are still larger than &lt;h2&gt; tags. It’s the same when you apply a font color to the &lt;body&gt;, the links on the page still appear in good old-fashioned web-browser blue.</p></li>
+					<li><p>When styles conflict, the more specific style wins out. In other words, when you’ve specifically applied CSS properties to an element — like specifying the font size for an unordered list — and those properties conflict with any inherited properties — like a font-size set for the &lt;body&gt; tag — the browser uses the font size applied to the &lt;ul&gt; tag.</p></li>
+				</ul>
+			</article>
+		</section>
+		<section id="properties" class="section">
+			<h1 class="heading section__title">Properties and values</h1>
+			<article class="section__article">
+				<h2 id="at-rules" class="heading article__title">1. @-rules (At-rules)</h2>
+				<p>An at-rule is a CSS statement beginning with an at sign, &quot;@&quot; (U+0040 COMMERCIAL AT), followed by an identifier and includes everything up to the next semi-colon, &quot;;&quot; (U+003B SEMICOLON), or the next CSS block, whichever comes first.</p>
+				<h3 class="heading article__subheading">1.1 @charset</h3>
+				<p>The @charset CSS at-rule specifies the character encoding used in the style sheet. It must be the first element in the style sheet and not be preceded by any character; as it is not a nested statement, it cannot be used inside conditional group at-rules. If several @charset at-rules are defined, only the first one is used, and it cannot be used inside a style attribute on an HTML element or inside the &lt;style&gt; element where the character set of the HTML page is relevant.</p>
+				<p>This at-rule is useful when using non-ASCII characters in some CSS properties, like content.</p>
+				<p>As there are several ways to define the character encoding of a style sheet, the browser will try the following methods in the following order (and stop as soon as one yields a result):</p>
+				<ul class="standart-list">
+					<li><p>The value of the Unicode byte-order character placed at the beginning of the file.</p></li>
+					<li><p>The value given by the charset attribute of the Content-Type: HTTP header or the equivalent in the protocol used to serve the style sheet.</p></li>
+					<li><p>The @charset CSS at-rule.</p></li>
+					<li><p>Use the character encoding defined by the referring document: the charset attribute of the &lt;link&gt; element. This method is obsoleted in HTML5 and must not be used.</p></li>
+					<li><p>Assume that the document is UTF-8</p></li>
+				</ul>
+				<p>Syntax:</p>
+				<code class="code-example">@charset "&lt;charset&gt;";</code>
+				<p>Where &lt;charset&gt; is a &lt;string&gt; denoting the character encoding to be used. It must be the name of a web-safe character encoding defined in the IANA-registry, and must be double-quoted, following exactly one space character (U+0020), and immediately terminated with a semicolon. If several names are associated with an encoding, only the one marked with preferred must be used.</p>
+				<h3 class="heading article__subheading">1.2 @import</h3>
+				<p>The @import CSS at-rule is used to import style rules from other style sheets. These rules must precede all other types of rules, except @charset rules; as it is not a nested statement, @import cannot be used inside conditional group at-rules.</p>
+				<p>So that user agents can avoid retrieving resources for unsupported media types, authors may specify media-dependent @import rules. These conditional imports specify comma-separated media queries after the URI. In the absence of any media query, the import is unconditional. Specifying all for the medium has the same effect.</p>
+				<p>Syntax:</p>
+				<code class="code-example">@import url list-of-media-queries;</code>
+				<p>Where <strong>url</strong> is a &lt;string&gt; or a &lt;uri&gt; representing the location of the resource to import. The URL may be absolute or relative. Note that the URL need not actually specify a file; it can just specify the package name and part, and the appropriate file is chosen automatically (e.g. chrome://communicator/skin/). <strong>list-of-media-queries</strong> is a comma-separated list of media queries conditioning the application of the CSS rules defined in the linked URL. If the browser does not support any these queries, it does not load the linked resource.</p>
+				<h3 class="heading article__subheading">1.3 @namespace</h3>
+				<p>@namespace is an at-rule that defines XML namespaces to be used in a CSS style sheet. The defined namespaces can be used to restrict the universal, type, and attribute selectors to only select elements within that namespace. The @namespace rule is generally only useful when dealing with documents containing multiple namespaces — such as HTML5 with inline SVG or MathML, or XML that mixes multiple vocabularies.</p>
+				<p>Any @namespace rules must follow all @charset and @import rules, and precede all other at-rules and style declarations in a style sheet. @namespace can be used to define the default namespace for the style sheet. When a default namespace is defined, all universal and type selectors apply only to elements in that namespace. The @namespace rule can also be used to define a namespace prefix. When a universal, type, or attribute selector is prefixed with a namespace prefix, then that selector only matches if the namespace and name of the element or attribute matches.</p>
+				<p>In HTML5, known foreign elements will be automatically be assigned namespaces. This means that HTML elements will act as though they are in the XHTML namespace (http://www.w3.org/1999/xhtml), even if there is no xmlns attribute anywhere in the document, and the &lt;svg&gt; and &lt;math&gt; elements will be assigned their proper namespaces (http://www.w3.org/2000/svg and http://www.w3.org/1998/Math/MathML).</p>
+				<p>Syntax:</p>
+				<code class="code-example">@namespace url(XML-namespace-URL); @namespace "XML-namespace-URL";</code>
+				<h3 class="heading article__subheading">1.4 @media</h3>
+				<p>The @media CSS at-rule associates a set of nested statements, in a CSS block that is delimited by curly braces, with a condition defined by a media query. The @media at-rule may be used not only at the top level of a CSS, but also inside any CSS conditional-group at-rule.</p>
+				<p>Syntax:</p>
+				<code class="code-example">@media not|only &lt;media type&gt; and (&lt;media feature&gt;) { &lt;group-rule-body&gt; }</code>
+				<p>Media types:</p>
+				<ul class="standart-list">
+					<li><p>all - suitable for all devices.</p></li>
+					<li><p>print - intended for paged material and for documents viewed on screen in print preview mode.</p></li>
+					<li><p>screen - intended primarily for color computer screens.</p></li>
+					<li><p>speech - intended for speech synthesizers.</p></li>
+				</ul>
+				<p>Media features (each media feature tests for one specific feature of the browser or device):</p>
+				<table class="standart-table">
+					<tr>
+						<td>width</td>
+						<td>Viewport width</td>
+					</tr>
+					<tr>
+						<td>height</td>
+						<td>Viewport height</td>
+					</tr>
+					<tr>
+						<td>aspect-ratio</td>
+						<td>Width-to-height aspect ratio of the viewport</td>
+					</tr>
+					<tr>
+						<td>orientation</td>
+						<td>Orientation of the viewport</td>
+					</tr>
+					<tr>
+						<td>resolution</td>
+						<td>Pixel density of the output device</td>
+					</tr>
+					<tr>
+						<td>scan</td>
+						<td>Scanning process of the output device</td>
+					</tr>
+					<tr>
+						<td>grid</td>
+						<td>Is the device a grid or bitmap?</td>
+					</tr>
+					<tr>
+						<td>update-frequency</td>
+						<td>How quickly (if at all) can the output device modify the appearance of the content</td>
+					</tr>
+					<tr>
+						<td>overflow-block</td>
+						<td>How does the output device handle content that overflows the viewport along the block axis?</td>
+					</tr>
+					<tr>
+						<td>overflow-inline</td>
+						<td>Can content that overflows the viewport along the inline axis be scrolled?</td>
+					</tr>
+					<tr>
+						<td>color</td>
+						<td>Number of bits per color component of the output device, or zero if the device isn't color.</td>
+					</tr>
+					<tr>
+						<td>color-index</td>
+						<td>Number of entries in the output device's color lookup table, or zero if the device does not use such a table.</td>
+					</tr>
+					<tr>
+						<td>display-mode</td>
+						<td>The display mode of the application, as specified in the web app manifest's display member.</td>
+					</tr>
+					<tr>
+						<td>monochrome</td>
+						<td>Bits per pixel in the output device's monochrome frame buffer, or 0 if the device is not monochrome.</td>
+					</tr>
+					<tr>
+						<td>inverted-colors</td>
+						<td>Is the user agent or underlying OS inverting colors?</td>
+					</tr>
+					<tr>
+						<td>pointer</td>
+						<td>Is the primary input mechanism a pointing device, and if so, how accurate is it?</td>
+					</tr>
+					<tr>
+						<td>hover</td>
+						<td>Does the primary input mechanism allow the user to hover over elements?</td>
+					</tr>
+					<tr>
+						<td>any-pointer</td>
+						<td>Is any available input mechanism a pointing device, and if so, how accurate is it?</td>
+					</tr>
+					<tr>
+						<td>any-hover</td>
+						<td>Does any available input mechanism allow the user to hover over elements?</td>
+					</tr>
+					<tr>
+						<td>light-level</td>
+						<td>Current ambient light level</td>
+					</tr>
+					<tr>
+						<td>scripting</td>
+						<td>Is scripting (e.g. JavaScript) available?</td>
+					</tr>
+				</table>
+				<h3 class="heading article__subheading">1.5 @supports</h3>
+				<p>The @supports CSS at-rule associates a set of nested statements, in a CSS block, that is delimited by curly braces, with a condition consisting of testing of CSS declarations, that is property-value pairs, combined with arbitrary conjunctions, disjunctions, and negations of them. Such a condition is called a supports condition. @supports gives CSS the ability to perform a feature query. The @supports at-rule may be used not only at the top level of a CSS, but also inside any CSS conditional-group at-rule.</p>
+				<p>Syntax:</p>
+				<code class="code-example">@supports &lt;supports-condition&gt; { &lt;group-rule-body&gt; }</code>
+				<h3 class="heading article__subheading">1.6 @font-face</h3>
+				<p>The @font-face CSS at-rule allows authors to specify online fonts to display text on their web pages. By allowing authors to provide their own fonts, @font-face eliminates the need to depend on the limited number of fonts users have installed on their computers. The @font-face at-rule may be used not only at the top level of a CSS, but also inside any CSS conditional-group at-rule.</p>
+				<p>Syntax:</p>
+				<code class="code-example">@font-face { font-family: ; src: ; unicode-range: ; font-variant: ; font-feature-settings: ; font-stretch: ; font-weight: ; font-style: ; }</code>
+				<h3 class="heading article__subheading">1.7 @keyframes</h3>
+				<p>The @keyframes CSS at-rule controls the intermediate steps in a CSS animation sequence by defining styles for keyframes (or waypoints) along the animation sequence. This gives more control over the intermediate steps of the animation sequence than transitions.</p>
+				<p>To use keyframes, create a @keyframes rule with a name that is then used by the animation-name property to match an animation to its keyframe declaration. Each @keyframes rule contains a style list of keyframe selectors, which specify percentages along the animation when the keyframe occurs, and a block containing the styles for that keyframe.</p>
+				<p>Syntax:</p>
+				<code class="code-example">@keyframes &lt;keyframes-name&gt; { &lt;keyframe-block-list&gt; }</code>
+			</article>
+			<article class="section__article">
+				<h2 id="text-formatting" class="heading article__title">2. Text formatting properties</h2>
+			</article>
+		</section>
+		<section id="layout" class="section">
+			<h1 class="heading section__title">CSS Layout</h1>
+			<article class="section__article">
+				
+			</article>
+		</section>
+		<section id="animation" class="section">
+			<h1 class="heading section__title">CSS Animation</h1>
+			<article class="section__article">
+				
+			</article>
+		</section>
+		<section id="responsive" class="section">
+			<h1 class="heading section__title">Responsive design</h1>
+			<article class="section__article">
+				
+			</article>
+		</section>
+		<button class="cd-top">Top</button>
+		<script src="scripts/jquery.min.js"></script>
+		<script src="scripts/main.js"></script>
+	</body>
+</html>

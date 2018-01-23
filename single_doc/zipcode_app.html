@@ -51,7 +51,7 @@
       e.preventDefault();
 
       let zip = document.querySelector('.zip').value;
-      fetch(`http://api.zippopotam.us/us/${zip}`)
+      fetch(`https://api.zippopotam.us/us/${zip}`)
         .then(response => {
           if (response.status != 200) {
             showIcon('remove');
