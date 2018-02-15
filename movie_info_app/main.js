@@ -1,19 +1,4 @@
-$(document).ready(() => {
-    $('#searchForm').on('submit', (e) => {
-        e.preventDefault();
-        let searchText = $('#searchText').val();
-        getMovies(searchText);
-    });
-});
-
-function getMovies(searchText) {
-    axios.get('https://www.omdbapi.com?s='+searchText+'&apikey=thewdb')
-        .then((response) => {
-            console.log(response);
-            let movies = response.data.Search;
-            let output = '';
-            $.each(movies, (index, movie) => {
-                output += `
+$(document).ready(()=>{$('#searchForm').on('submit',(e)=>{e.preventDefault();let searchText=$('#searchText').val();getMovies(searchText);});});function getMovies(searchText){axios.get('https://www.omdbapi.com?s='+searchText+'&apikey=thewdb').then((response)=>{console.log(response);let movies=response.data.Search;let output='';$.each(movies,(index,movie)=>{output+=`
                     <div class="col-md-3">
                         <div class="well text-center">
                             <img src="${movie.Poster}">
@@ -21,29 +6,7 @@ function getMovies(searchText) {
                             <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="#">Movie Details</a>
                         </div>
                     </div>
-                `;
-            });
-            $('#movies').html(output);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-}
-
-function movieSelected(id) {
-    sessionStorage.setItem('movieId', id);
-    window.location = 'movie.html';
-    return false;
-}
-
-function getMovie() {
-    let movieId = sessionStorage.getItem('movieId');
-
-    axios.get('https://www.omdbapi.com?i='+movieId+'&apikey=thewdb')
-        .then((response) => {
-            console.log(response);
-            let movie = response.data;
-            let output = `
+                `;});$('#movies').html(output);}).catch((err)=>{console.log(err);});}function movieSelected(id){sessionStorage.setItem('movieId',id);window.location='movie.html';return false;}function getMovie(){let movieId=sessionStorage.getItem('movieId');axios.get('https://www.omdbapi.com?i='+movieId+'&apikey=thewdb').then((response)=>{console.log(response);let movie=response.data;let output=`
                 <div class="row">
                     <div class="col-md-4">
                         <img src="${movie.Poster}" class="thumbnail">
@@ -70,11 +33,4 @@ function getMovie() {
                         <a href="movie_info_app.html" class="btn btn-default">Go Back To Search</a>
                     </div>
                 </div>
-            `;
-
-            $('#movie').html(output);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-}
+            `;$('#movie').html(output);}).catch((err)=>{console.log(err);})}getMovie();
