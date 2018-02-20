@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Github User Finder</title>
+  <link href="https://bootswatch.com/3/simplex/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse" style="border-radius: 0;">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Github Finder</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="starter-template">
+      <h1>Search Github users</h1>
+      <input type="text" id="searchUser" class="form-control" placeholder="Enter a username">
+      <br><br>
+      <div id="profile"></div>
+    </div>
+
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#searchUser").on("keyup", function(e) {
+        var username = e.target.value;
+
+        $.ajax({
+          url: "https://api.github.com/users/"+username,
+          data: {
+            client_id: "df910282df1518cc475b",
+            client_secret: "1318301f5da70cb733c0f3c048d262851bec172c"
+          }
+        }).done(function(user) {
+          $.ajax({
+            url: "https://api.github.com/users/"+username+"/repos",
+            data: {
+              client_id: "df910282df1518cc475b",
+              client_secret: "1318301f5da70cb733c0f3c048d262851bec172c",
+              sort: "created: asc",
+              per_page: 5
+            }
+          }).done(function(repos) {
+            $.each(repos, function(index, repo) {
+              $("#repos").append(`
+                <div class="well">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <strong>${repo.name || "Not present"}</strong>: ${repo.description}
+                    </div>
+                    <div class="col-md-3">
+                      <span class="label label-default">Forks: ${repo.forks_count || "Not present"}</span>
+                      <span class="label label-primary">Watchers: ${repo.watchers_count || "Not present"}</span>
+                      <span class="label label-success">Stars: ${repo.stargazers_count || "Not present"}</span>
+                    </div>
+                    <div class="col-md-2">
+                      <a href="${repo.html_url}" target="_blank" class="btn btn-default">Repo page</a>
+                    </div>
+                  </div>  
+                </div>
+              `);
+            });
+          });
+          $("#profile").html(`
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">${user.name || "Not present"}</h3>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-3">
+                    <img src="${user.avatar_url || "Not present"}" class="thumbnail" style="width: 100%;">
+                    <a href="${user.html_url || "Not present"}" class="btn btn-primary btn-block" target="_blank">View Profile</a>
+                  </div>
+                  <div class="col-md-9">
+                    <span class="label label-default">Public Repos: ${user.public_repos || "Not present"}</span>
+                    <span class="label label-primary">Public Gists: ${user.public_gists || "Not present"}</span>
+                    <span class="label label-success">Followers: ${user.followers || "Not present"}</span>
+                    <span class="label label-info">Following: ${user.following || "Not present"}</span>
+                    <br><br>
+                    <ul class="list-group">
+                      <li class="list-group-item">Company: ${user.company || "Not present"}</li>
+                      <li class="list-group-item">Website/Blog: ${user.blog || "Not present"}</li>
+                      <li class="list-group-item">Location: ${user.location || "Not present"}</li>
+                      <li class="list-group-item">Member since: ${user.created_at || "Not present"}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h3 class="page-header">Latest repos</h3>
+            <div id="repos"></div>
+          `);
+        });
+      })
+    });
+  </script>
+</body>
+
+</html>
