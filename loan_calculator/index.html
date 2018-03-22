@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="loan.png" type="image/png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <title>Loan Calculator</title>
+  <style>
+    #loader, #results {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="bg-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card card-body text-center mt-5">
+          <h1 class="heading diplay-5 pb-3">Loan Calculator</h1>
+          <form id="loan-form">
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">$</div>
+                </div>
+                <input type="number" class="form-control" placeholder="Loan Amount" id="amount">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">%</div>
+                </div>
+                <input type="number" class="form-control" placeholder="Interest" id="interest">
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="number" placeholder="Years to repay" id="years" class="form-control">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-dark btn-block" type="submit" value="Calculate">Submit</button>
+            </div>
+          </form>
+
+          <div id="loader">
+            <img src="loader.gif" alt="Loader spinner">
+          </div>
+
+          <div id="results">
+            <h5 class="pt-4">Results</h5>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Monthly payment</div>
+                </div>
+                <input type="number" class="form-control" id="monthlyPayment" disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Total payment</div>
+                </div>
+                <input type="number" class="form-control" id="totalPayment" disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Total interest</div>
+                </div>
+                <input type="number" class="form-control" id="totalInterest" disabled>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("loan-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      document.getElementById("results").style.display = "none";
+      document.getElementById("loader").style.display = "block";
+      setTimeout(calculateResult, 2000);
+    });
+
+    function calculateResult() {
+      const amount = document.getElementById("amount").value;
+      const interest = document.getElementById("interest").value;
+      const years = document.getElementById("years").value;
+
+      let monthlyPayment = document.getElementById("monthlyPayment");
+      let totalPayment = document.getElementById("totalPayment");
+      let totalInterest = document.getElementById("totalInterest");
+
+      const principal = parseFloat(amount);
+      const calculatedInterest = parseFloat(interest) / 100 / 12;
+      const calculatedPayments = parseFloat(years) * 12;
+
+      const x = Math.pow(1 + calculatedInterest, calculatedPayments);
+      const monthly = (principal * x * calculatedInterest) / (x - 1);
+
+      if(isFinite(monthly)) {
+        monthlyPayment.value = monthly.toFixed(2);
+        totalPayment.value = (monthly * calculatedPayments).toFixed(2);
+        totalInterest.value = (totalPayment.value - principal).toFixed(2);
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("results").style.display = "block";
+      } else {
+        showError("Please check your numbers");
+      }
+    }
+
+    function showError(error) {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("results").style.display = "none";
+      const card = document.querySelector(".card");
+      const heading = document.querySelector(".heading");
+
+      const errorDiv = document.createElement("div");
+      errorDiv.className = "alert alert-danger";
+      errorDiv.appendChild(document.createTextNode(error));
+
+      card.insertBefore(errorDiv, heading);
+
+      setTimeout(clearError, 2000);
+    }
+
+    function clearError() {
+      document.querySelector(".alert").remove();
+    }
+  </script>
+</body>
+
+</html>
