@@ -26,45 +26,27 @@
   </div>
 
   <script>
-    let fact = document.getElementById("fact");
-    let factText = document.getElementById("factText");
-    let numberInput = document.getElementById("numberInput");
-    numberInput.addEventListener("input", getFact);
+    const fact = document.getElementById("fact");
+    const factText = document.getElementById("factText");
+    const numberInput = document.getElementById("numberInput");
 
-    // function getFact() {
-    //   let number = numberInput.value;
-    //   let xhr = new XMLHttpRequest();
-
-    //   xhr.open("GET", "http://numbersapi.com/"+number, true);
-
-    //   xhr.onload = function() {
-    //     if(this.status == 200 && number != "") {
-    //       fact.style.display = "block";
-    //       factText.textContent = this.responseText;
-    //     }
-    //     if(number == "") {
-    //       fact.style.display = "none";
-    //     }
-    //   }
-
-    //   xhr.send();
-    // }
-
-    function getFact() {
-      let number = numberInput.value;
+    const getFact = () => {
+      const number = numberInput.value;
       fetch("http://numbersapi.com/"+number)
         .then(response => response.text())
         .then(data => {
-          if(number != "") {
+          if (number != "") {
             fact.style.display = "block";
             factText.textContent = data;
-          }
+          };
           if(number == "") {
             fact.style.display = "none";
-          }
+          };
         })
         .catch(err => console.log(err));
     }
+
+    numberInput.addEventListener("input", getFact);
   </script>
 </body>
 

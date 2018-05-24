@@ -44,7 +44,7 @@
   </div>
 
   <script>
-    document.querySelector('#zipForm').addEventListener('submit', getLocationInfo);
+    document.getElementById('zipForm').addEventListener('submit', getLocationInfo);
     document.querySelector('body').addEventListener('click', deleteLoc);
 
     function getLocationInfo(e) {
@@ -92,7 +92,7 @@
                     <li>
                         <strong>Latitude: </strong>${place['latitude']}
                     </li>
-                  </ul>  
+                  </ul>
                 </div>
               </article>
             `;

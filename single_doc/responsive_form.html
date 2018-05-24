@@ -87,6 +87,7 @@
         .contact form button {
             background-color: #c9e6ff;
             border: none;
+            cursor: pointer;
             text-transform: uppercase;
         }
 
@@ -95,6 +96,10 @@
             color: #fff;
             outline: none;
             transition: background-color 1s ease-out;
+        }
+        
+        .fa {
+          margin-right: 4px;
         }
 
         @media(min-width:700px) {
@@ -130,19 +135,19 @@
                 <form id="form">
                     <p>
                         <label>Name</label>
-                        <input type="text" name="name" id="name">
+                        <input type="text" name="name" id="name" autocomplete="name">
                     </p>
                     <p>
                         <label>Company</label>
-                        <input type="text" name="company" id="company">
+                        <input type="text" name="company" id="company" autocomplete="organization">
                     </p>
                     <p>
                         <label>Email Adress</label>
-                        <input type="text" name="name" id="email">
+                        <input type="text" name="name" id="email" autocomplete="email">
                     </p>
                     <p>
                         <label>Phone Number</label>
-                        <input type="text" name="phone" id="phone">
+                        <input type="text" name="phone" id="phone" autocomplete="tel-national">
                     </p>
                     <p class="full">
                         <label>Message</label>
@@ -159,7 +164,7 @@
     <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
     <script>
 
-        var config = {
+        const config = {
             apiKey: "AIzaSyADlPa33DuGp0DdbSIdS2gCAg4A3QLStzA",
             authDomain: "likkijay-test.firebaseapp.com",
             databaseURL: "https://likkijay-test.firebaseio.com",
@@ -167,38 +172,37 @@
             storageBucket: "likkijay-test.appspot.com",
             messagingSenderId: "864785108564"
         };
+        
         firebase.initializeApp(config);
 
-        var messagesRef = firebase.database().ref('messages');
+        const messagesRef = firebase.database().ref('messages');
 
-        document.getElementById('form').addEventListener('submit', submitForm);
+        const getInputVal = (id) => document.getElementById(id).value;
 
-        function getInputVal(id) {
-            return document.getElementById(id).value;
-        }
-
-        function submitForm(e) {
+        const submitForm = (e) => {
             e.preventDefault();
 
-            var name = getInputVal('name');
-            var company = getInputVal('company');
-            var email = getInputVal('email');
-            var phone = getInputVal('phone');
-            var message = getInputVal('message');
+            const name = getInputVal('name');
+            const company = getInputVal('company');
+            const email = getInputVal('email');
+            const phone = getInputVal('phone');
+            const message = getInputVal('message');
 
-            saveMessage(name, company, email, phone, message);
-        }
+            saveMessage({name, company, email, phone, message});
+        };
 
-        function saveMessage(name, company, email, phone, message) {
-            var newMessageRef = messagesRef.push();
+        const saveMessage = ({name, company, email, phone, message}) => {
+            const newMessageRef = messagesRef.push();
             newMessageRef.set({
-                name: name,
-                company: company,
-                email: email,
-                phone: phone,
-                message: message
+                name,
+                company,
+                email,
+                phone,
+                message
             });
-        }
+        };
+        
+        document.getElementById('form').addEventListener('submit', submitForm);
     </script>
 </body>
 </html>
